@@ -4,7 +4,7 @@ export interface Props {
     className?: string;
 }
 
-const { text, className = "" } = Astro.props;
+const { text, className = "text-2xl font-bold " } = Astro.props;
 ---
 
 <h1 class={className}>{text}</h1>

@@ -4,12 +4,14 @@ import Main from '../components/Main.astro';
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
+export const prerender = true;
+
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout title="Rythm nations">
 	<Main>
-		<H1 className="text-2xl font-bold text-teal-900 "  text='Rythm Nation'/>
+		<H1  text='Rythm Nation'/>
 	</Main>
 </Layout>

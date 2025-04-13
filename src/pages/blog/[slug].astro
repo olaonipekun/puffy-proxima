@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, getEntry} from 'astro:content';
+import H1 from '../../components/H1.astro';
+import Main from '../../components/Main.astro';
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+// export const prerender = true
+
+// export const getStaticPaths = async () => {
+//     const posts = await getCollection("posts")
+//     const paths = posts.map(post => {
+//         return {
+//             params: {
+//                 slug: post.slug
+//             },
+//             props: {
+//                 post
+//             }
+//         }
+//     })
+//     return paths;
+// }
+
+// type Props = {
+//     post: CollectionEntry<"posts">
+// }
+
+// const {post} = Astro.props;
+
+const {slug} = Astro.params;
+
+const post = await getEntry("posts", slug as string);
+
+if(!post) {
+    return Astro.redirect('/404');
+}
+
+const {Content} = await post.render();
+---
+
+<Layout title={post.data.title}>
+	<Main>
+		<H1  text={post.data.title} className='text-2xl font-bold mb-4' />
+        <Image src={post.data.image}
+        width={1024}
+        height={1024 / 1.5}
+        alt={post.data.title}
+        class="rounded-2xl shadow-xl object-cover mb-4 aspect-thumbnail"
+    />
+    <div class="prose prose-2xl overflow-visible relative mb-20">
+        <Content />
+    </div>
+    
+	</Main>
+</Layout>
