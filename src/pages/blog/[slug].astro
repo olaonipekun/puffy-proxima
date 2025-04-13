@@ -48,7 +48,9 @@ const {Content} = await post.render();
         alt={post.data.title}
         class="rounded-2xl shadow-xl object-cover mb-4 aspect-thumbnail"
     />
-    <div class="prose prose-2xl overflow-visible relative mb-20">
+    <div class="prose-2xl overflow-visible relative mb-20 prose dark:prose-invert
+        prose-h1:font-bold prose-h1:text-xl
+        prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl">
         <Content />
     </div>
     
